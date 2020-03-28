@@ -1,4 +1,6 @@
 from treeLogo import treelogo
+from Help import help
+
 class Node:
 	def __init__(self, val):
 		self.val = val
@@ -52,6 +54,19 @@ class Tree:
 			return self.inorder(self.root, '')
 		elif x =='postorder':
 			return self.postorder(self.root, '')
+
+
+if __name__ = __main__:
+    print(treelogo)
+    print('type help for a list of commands\n')
+    command = ''
+    while(command != 'exit'):
+        command = input()
+        if command == 'help':
+            print(help)
+        
+    exit()
+    
 
 
 
