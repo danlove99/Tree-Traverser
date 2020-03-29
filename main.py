@@ -19,7 +19,7 @@ def append():
 		print('No tree to append to!\n')
 		return
 	curTree = trees[0]
-	val = input('what value do you want to append to the tree?')
+	val = input('what value do you want to append to the tree?: ')
 	curTree.append(val, curTree.root)
 	return
 
