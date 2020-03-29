@@ -1,65 +1,6 @@
 from treeLogo import treelogo
 from Help import help
-
-class Node:
-	def __init__(self, val):
-		self.val = val
-		self.left = None
-		self.right = None
-
-class Tree:
-	def __init__(self, root):
-		self.root = Node(root)
-
-	def append(self, val, root):
-		if val > root.val:
-			if root.right != None:
-				self.append(val, root.right)
-			else:
-				root.right = Node(val)
-
-		elif val < root.val:
-			if root.left != None:
-				self.append(val, root.left)
-			else:
-				root.left = Node(val)
-
-	def preorder(self, start, traversal):
-		if start:
-			traversal += str(start.val) + ' - '
-			traversal = self.preorder(start.left, traversal)
-			traversal = self.preorder(start.right, traversal)
-		return traversal
-
-	def inorder(self, start, traversal):
-		if start:
-			traversal = self.preorder(start.left, traversal)
-			traversal += str(start.val) + ' - '
-			traversal = self.preorder(start.right, traversal)
-		return traversal
-
-	def postorder(self, start, traversal):
-		if start:
-			traversal = self.preorder(start.left, traversal)
-			traversal = self.preorder(start.right, traversal)
-			traversal += str(start.val) + ' - '
-		return traversal
-
-
-	def __str__(self):
-		print('''
-			Available traversals:
-			preorder
-			inorder
-			postorder'''
-			)
-		x = input('How would you like to traverse the tree?: \n')
-		if x == 'preorder':
-			return self.preorder(self.root, '')
-		elif x == 'inorder':
-			return self.inorder(self.root, '')
-		elif x =='postorder':
-			return self.postorder(self.root, '')
+from Tree import *
 
 trees = []
 
@@ -82,6 +23,24 @@ def append():
 	curTree.append(val, curTree.root)
 	return
 
+def traversal():
+	if len(trees) <= 0:
+		print('No tree to traverse!\n')
+		return
+	print(trees[0])
+
+def height():
+	if len(trees) <= 0:
+		print('no tree to measure!\n')
+		return
+	curTree = trees[0]
+	print(curTree.height(curTree.root))
+def size():
+	if len(trees) <= 0:
+		print('no tree to measure!\n')
+		return
+	print(trees[0].size_(trees[0].root))
+
 if __name__ == "__main__":
     print(treelogo)
     print('type help for a list of commands\n')
@@ -91,15 +50,22 @@ if __name__ == "__main__":
         if command == 'help':
             print(help)
         elif command == 'newTree':
-        	newTree()
+            newTree()
         elif command == 'append':
-        	append()
+            append()
         elif command == 'traverse':
-        	if len(trees) <= 0:
-        		print('No tree to append to!\n')
-        	print(trees[0])
+            traversal()
         elif command == 'deleteTree':
-        	trees.pop()
+            trees.pop()
+        elif command == 'height':
+            height()
+        elif command == 'size':
+            size()
+        elif command == 'exit':
+            print('goodbye!')
+        else:
+        	print('command not recognised!')
+
 
 
         
