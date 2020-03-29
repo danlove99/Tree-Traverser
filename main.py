@@ -41,6 +41,12 @@ def size():
 		return
 	print(trees[0].size_(trees[0].root))
 
+def reverse():
+	if len(trees) <= 0:
+		print('no tree to reverse')
+		return
+	print(trees[0].reverse(trees[0].root))
+
 if __name__ == "__main__":
     print(treelogo)
     print('type help for a list of commands\n')
@@ -63,6 +69,8 @@ if __name__ == "__main__":
             size()
         elif command == 'exit':
             print('goodbye!')
+        elif command == 'reverse':
+        	reverse()
         else:
         	print('command not recognised!')
 
