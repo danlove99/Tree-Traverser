@@ -47,6 +47,12 @@ class Tree:
 
 
 	def __str__(self):
+		print('''
+			Available traversals:
+			preorder
+			inorder
+			postorder'''
+			)
 		x = input('How would you like to traverse the tree?: \n')
 		if x == 'preorder':
 			return self.preorder(self.root, '')
@@ -55,8 +61,28 @@ class Tree:
 		elif x =='postorder':
 			return self.postorder(self.root, '')
 
+trees = []
 
-if __name__ = __main__:
+
+def newTree():
+	if len(trees) > 0:
+		print('You already have a tree...\n type deleteTree to create another one')
+		return
+	root = input('what would you like the root of the tree to be?: ')
+	tree1 = Tree(root)
+	trees.append(tree1)
+
+
+def append():
+	if len(trees) <= 0:
+		print('No tree to append to!\n')
+		return
+	curTree = trees[0]
+	val = input('what value do you want to append to the tree?')
+	curTree.append(val, curTree.root)
+	return
+
+if __name__ == "__main__":
     print(treelogo)
     print('type help for a list of commands\n')
     command = ''
@@ -64,6 +90,18 @@ if __name__ = __main__:
         command = input()
         if command == 'help':
             print(help)
+        elif command == 'newTree':
+        	newTree()
+        elif command == 'append':
+        	append()
+        elif command == 'traverse':
+        	if len(trees) <= 0:
+        		print('No tree to append to!\n')
+        	print(trees[0])
+        elif command == 'deleteTree':
+        	trees.pop()
+
+
         
     exit()
     
