@@ -42,6 +42,25 @@ class Tree:
 			traversal += str(start.val) + ' - '
 		return traversal
 
+	def levelorder(self, start):
+	    if start is None:
+	        return 
+
+	    queue = Queue()
+	    queue.enqueue(start)
+
+	    traversal = ""
+	    while len(queue) > 0:
+	        traversal += str(queue.peek()) + "-"
+	        node = queue.dequeue()
+
+	        if node.left:
+	            queue.enqueue(node.left)
+	        if node.right:
+	            queue.enqueue(node.right)
+
+	    return traversal
+
 	def height(self, node):
 		if node is None:
 			return -1
@@ -77,7 +96,8 @@ class Tree:
 			Available traversals:
 			preorder
 			inorder
-			postorder'''
+			postorder
+			levelorder'''
 			)
 		x = input('How would you like to traverse the tree?: \n')
 		if x == 'preorder':
@@ -86,6 +106,8 @@ class Tree:
 			return self.inorder(self.root, '')
 		elif x =='postorder':
 			return self.postorder(self.root, '')
+		elif x =='levelorder':
+			return self.levelorder(self.root)
 
 
 class Stack:
@@ -115,7 +137,7 @@ class Stack:
     def __str__(self):
         s = ""
         for i in range(len(self.items)):
-            s += str(self.items[i].value) + "-"
+            s += str(self.items[i].val) + "-"
         return s
 
 
@@ -141,4 +163,4 @@ class Queue:
 
     def peek(self):
         if not self.is_empty():
-            return self.items[-1].value
+            return self.items[-1].val
