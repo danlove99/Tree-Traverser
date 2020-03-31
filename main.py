@@ -79,12 +79,3 @@ if __name__ == "__main__":
         
     exit()
     
-
-
-
-'''
-tree = Tree(5)
-tree.append(6, tree.root)
-tree.append(4, tree.root)
-print(treelogo)
-print(tree)'''

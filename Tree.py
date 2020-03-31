@@ -45,10 +45,8 @@ class Tree:
 	def levelorder(self, start):
 	    if start is None:
 	        return 
-
 	    queue = Queue()
 	    queue.enqueue(start)
-
 	    traversal = ""
 	    while len(queue) > 0:
 	        traversal += str(queue.peek()) + "-"
@@ -58,7 +56,6 @@ class Tree:
 	            queue.enqueue(node.left)
 	        if node.right:
 	            queue.enqueue(node.right)
-
 	    return traversal
 
 	def height(self, node):
