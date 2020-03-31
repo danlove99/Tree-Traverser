@@ -36,9 +36,7 @@ def height():
 	curTree = trees[0]
 	print(curTree.height(curTree.root))
 def size():
-	if len(trees) <= 0:
-		print('no tree to measure!\n')
-		return
+	print(trees[0].size())
 	print(trees[0].size_(trees[0].root))
 
 def reverse():
